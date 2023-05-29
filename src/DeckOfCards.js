@@ -36,16 +36,17 @@ function DeckOfCards() {
 
     useEffect(() => {
         async function reshuffleDeck() {
-            if (!intrvlId && deck) {
-                // console.log('deck', deck);
-                // console.log('deckid', deck.deck_id);
-                // console.log('am i getting to the if statement');
-                // console.log('this is the useEffect intrvlId', intrvlId);
-                const res = await axios.get(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/shuffle`);
-                setDeck(res.data);
-            }
+            // console.log('deck', deck);
+            // console.log('deckid', deck.deck_id);
+            // console.log('am i getting to the if statement');
+            // console.log('this is the useEffect intrvlId', intrvlId);
+            const res = await axios.get(`https://deckofcardsapi.com/api/deck/${deck.deck_id}/shuffle`);
+            setDeck(res.data);
         }
-        reshuffleDeck();
+
+        if (!intrvlId && deck) {
+            reshuffleDeck();
+        }
 
     }, [intrvlId]);
 
